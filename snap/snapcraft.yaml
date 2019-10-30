@@ -1,0 +1,26 @@
+name: mp3gain
+version: "1.5.2"
+summary: MP3Gain analyzes and adjusts mp3 files so that they have the same volume
+description: Tired of reaching for your volume knob every time your mp3 player changes to a new song?
+  MP3Gain analyzes and adjusts mp3 files so that they have the same volume.
+
+  MP3Gain does not just do peak normalization, as many normalizers do. Instead, it does some statistical analysis to determine how loud the file actually sounds to the human ear.
+  Also, the changes MP3Gain makes are completely lossless. There is no quality lost in the change because the program adjusts the mp3 file directly, without decoding and re-encoding.
+confinement: strict
+
+apps:
+  mp3gain:
+    command: mp3gain
+    plugs:
+      - home
+
+parts:
+  mp3gain:
+    plugin: make
+    artifacts:
+      - mp3gain
+    source: https://downloads.sourceforge.net/project/mp3gain/mp3gain/1.5.2/mp3gain-1_5_2_r2-src.zip
+    make-parameters:
+      - CFLAGS=-O2
+    build-packages:
+      - gcc
