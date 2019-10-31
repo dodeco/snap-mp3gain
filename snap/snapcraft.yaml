@@ -1,5 +1,5 @@
 name: mp3gain
-version: "1.5.2"
+version: "1.6.2"
 summary: MP3Gain analyzes and adjusts mp3 files so that they have the same volume
 description: Tired of reaching for your volume knob every time your mp3 player changes to a new song?
   MP3Gain analyzes and adjusts mp3 files so that they have the same volume.
@@ -19,8 +19,11 @@ parts:
     plugin: make
     artifacts:
       - mp3gain
-    source: https://downloads.sourceforge.net/project/mp3gain/mp3gain/1.5.2/mp3gain-1_5_2_r2-src.zip
+    source: https://downloads.sourceforge.net/project/mp3gain/mp3gain/1.6.2/mp3gain-1_6_2-src.zip
     make-parameters:
       - CFLAGS=-O2
     build-packages:
       - gcc
+      - libmpg123-dev
+    stage-packages:
+      - libmpg123-0
