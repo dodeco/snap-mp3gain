@@ -14,6 +14,8 @@ apps:
     plugs:
       - home
 
+base: core18
+
 parts:
   mp3gain:
     plugin: make
@@ -23,7 +25,6 @@ parts:
     make-parameters:
       - CFLAGS=-O2
     build-packages:
-      - gcc
       - libmpg123-dev
     stage-packages:
       - libmpg123-0
