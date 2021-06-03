@@ -13,6 +13,7 @@ apps:
     command: mp3gain
     plugs:
       - home
+      - removable-media
 
 base: core18
 
