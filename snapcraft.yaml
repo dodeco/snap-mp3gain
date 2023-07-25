@@ -6,26 +6,29 @@ description: Tired of reaching for your volume knob every time your mp3 player c
 
   MP3Gain does not just do peak normalization, as many normalizers do. Instead, it does some statistical analysis to determine how loud the file actually sounds to the human ear.
   Also, the changes MP3Gain makes are completely lossless. There is no quality lost in the change because the program adjusts the mp3 file directly, without decoding and re-encoding.
+base: core20
 confinement: strict
+grade: stable
 
 apps:
   mp3gain:
-    command: mp3gain
+    command: usr/bin/mp3gain
     plugs:
       - home
       - removable-media
 
-base: core18
-
 parts:
   mp3gain:
     plugin: make
-    artifacts:
-      - mp3gain
     source: https://downloads.sourceforge.net/project/mp3gain/mp3gain/1.6.2/mp3gain-1_6_2-src.zip
     make-parameters:
       - CFLAGS=-O2
+      - INSTALL_PATH=$SNAPCRAFT_PART_INSTALL/usr/bin
     build-packages:
       - libmpg123-dev
     stage-packages:
       - libmpg123-0
+    override-build: |
+      set -eux
+      mkdir -p $SNAPCRAFT_PART_INSTALL/usr/bin
+      snapcraftctl build
