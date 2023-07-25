@@ -9,6 +9,7 @@ description: Tired of reaching for your volume knob every time your mp3 player c
 base: core20
 confinement: strict
 grade: stable
+license: LGPL-2.1-or-later
 
 apps:
   mp3gain:
